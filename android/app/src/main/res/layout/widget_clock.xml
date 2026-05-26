@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        android:textColor="rgba(255,255,255,0.5)"
+        android:textColor="#80FFFFFF"
         android:fontFamily="sans-serif"
         android:layout_marginTop="4dp"
         android:text="Dushanba, 1 Yanvar" />

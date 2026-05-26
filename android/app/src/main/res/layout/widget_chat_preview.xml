@@ -29,8 +29,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="📢 Umumiy: So'nggi xabar..."
-            android:textSize="11dp"
-            android:textColor="rgba(255,255,255,0.4)"
+            android:textSize="11sp"
+            android:textColor="#66FFFFFF"
             android:fontFamily="sans-serif"
             android:lines="1"
             android:ellipsize="end" />
@@ -39,8 +39,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="👥 Guruh: Xabar..."
-            android:textSize="11dp"
-            android:textColor="rgba(255,255,255,0.3)"
+            android:textSize="11sp"
+            android:textColor="#4DFFFFFF"
             android:fontFamily="sans-serif"
             android:lines="1"
             android:ellipsize="end" />
@@ -49,8 +49,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="💬 Shaxsiy: ..."
-            android:textSize="11dp"
-            android:textColor="rgba(255,255,255,0.25)"
+            android:textSize="11sp"
+            android:textColor="#40FFFFFF"
             android:fontFamily="sans-serif"
             android:lines="1"
             android:ellipsize="end" />
@@ -63,7 +63,7 @@
         android:layout_weight="1"
         android:text="XOLERIC ∞"
         android:textSize="9sp"
-        android:textColor="rgba(255,255,255,0.1)"
+        android:textColor="#1AFFFFFF"
         android:fontFamily="sans-serif"
         android:gravity="bottom" />
 

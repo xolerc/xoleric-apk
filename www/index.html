@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XOLERIC ∞</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css?v=7" />
+</head>
+<body>
+
+<div class="orb"></div>
+<div class="orb"></div>
+<div class="orb"></div>
+<canvas id="wave-canvas"></canvas>
+
+<div class="app">
+
+  <!-- Tab Navigation -->
+  <nav>
+    <div class="nav-logo">XOLERIC <span>∞</span></div>
+    <button class="tab-btn active" data-tab="home">Home</button>
+    <button class="tab-btn" data-tab="projects">Loyihalar</button>
+    <button class="tab-btn" data-tab="chat">Chat</button>
+    <button class="tab-btn" data-tab="contact">Aloqa</button>
+    <button class="tab-btn" data-tab="settings">Sozlamalar</button>
+  </nav>
+
+  <!-- HOME TAB -->
+  <div class="tab-content active" id="tab-home">
+    <section class="page-section">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title"><span class="hero-glow">XOLERIC</span></h1>
+          <div class="hero-line"></div>
+          <p class="hero-sub">DASTURCHI &bull; DIZAYNER &bull; MUHANDIS</p>
+          <p class="hero-desc">Frontend arxitektori. Tizimlar quruvchi. Interfeyslar yaratuvchi.</p>
+          <div class="hero-btns">
+            <button class="btn" onclick="switchTab('projects')">Loyihalar</button>
+            <button class="btn btn-outline" onclick="switchTab('chat')">Chat</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PROJECTS TAB -->
+  <div class="tab-content" id="tab-projects">
+    <section class="page-section">
+      <div class="container">
+        <div class="page-header">
+          <span class="section-number">01</span>
+          <h2>Loyihalar</h2>
+          <p class="page-sub">GitHub'dagi barcha ochiq manbali loyihalar</p>
+        </div>
+        <div class="projects-loading" id="projectsLoading">Yuklanmoqda...</div>
+        <div class="projects-grid" id="projectsGrid"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CHAT TAB -->
+  <div class="tab-content" id="tab-chat">
+    <section class="page-section chat-page">
+      <div class="container">
+        <div class="chat-container" id="chatContainer">
+          <div class="chat-sidebar" id="chatSidebar">
+            <div class="sidebar-header">
+              <h3>XOLERIC CHAT</h3>
+              <div class="sidebar-actions">
+                <button class="sidebar-create-btn" id="createChannelBtn" title="Kanal yaratish">📢</button>
+                <button class="sidebar-create-btn" id="createGroupBtn" title="Guruh yaratish">👥</button>
+                <button class="sidebar-create-btn" id="createPrivateBtn" title="Shaxsiy chat">💬</button>
+                <span class="online-badge" id="onlineBadge">0</span>
+              </div>
+            </div>
+            <div class="sidebar-user" id="sidebarUser">
+              <div class="sidebar-user-avatar" id="sidebarAvatar">?</div>
+              <div class="sidebar-user-info">
+                <span class="sidebar-user-name" id="sidebarName">Yuklanmoqda...</span>
+                <span class="sidebar-user-status" id="sidebarStatus">online</span>
+              </div>
+              <button class="sidebar-edit-btn" id="editProfileBtn">✎</button>
+            </div>
+            <div class="sidebar-chats" id="sidebarChats">
+              <div class="conv-empty">Yuklanmoqda...</div>
+            </div>
+          </div>
+          <div class="chat-main">
+            <div class="chat-header">
+              <span class="chat-header-name" id="chatHeaderName">Xoleric Chat</span>
+              <span class="chat-header-meta" id="chatHeaderMeta">super chat</span>
+              <span class="chat-header-count" id="onlineCount">0 online</span>
+            </div>
+            <div id="chatJoinArea" style="display:none;padding:24px;text-align:center;"></div>
+            <div class="chat-messages" id="chatMessages">
+              <div class="chat-loading">Chatni boshlash uchun konversatsiyani tanlang</div>
+            </div>
+            <div class="chat-input-area" id="chatInputArea" style="display:none">
+              <label class="chat-media-btn" id="chatMediaBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <input type="file" id="chatMediaInput" accept="image/*" hidden />
+              </label>
+              <div class="chat-preview" id="chatPreview" style="display:none">
+                <img id="chatPreviewImg" /><button id="chatPreviewRemove">&times;</button>
+              </div>
+              <textarea class="chat-input" id="chatInput" placeholder="Xabar yozing..." rows="1"></textarea>
+              <button class="chat-send-btn" id="chatSendBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Create Conversation Modal -->
+  <div class="modal-overlay" id="createModal" style="display:none">
+    <div class="modal">
+      <div class="modal-header"><h3 id="createModalTitle">Yangi chat</h3></div>
+      <div class="modal-body">
+        <input class="modal-input" id="createConvName" placeholder="Nomi" maxlength="50" />
+        <textarea class="modal-input modal-textarea" id="createConvDesc" placeholder="Tavsif (ixtiyoriy)" rows="2"></textarea>
+        <div id="createUserSelectWrap" style="display:none;margin-bottom:12px;">
+          <select class="modal-input" id="createConvUsers" style="border-radius:999px;padding:12px 18px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);color:#fff;font-family:inherit;font-size:14px;width:100%;outline:none;">
+            <option value="">Foydalanuvchini tanlang...</option>
+          </select>
+        </div>
+        <button class="modal-btn" id="createConvSave">Yaratish</button>
+        <button class="modal-btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06);margin-top:8px;" onclick="document.getElementById('createModal').style.display='none'">Bekor qilish</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT TAB -->
+  <div class="tab-content" id="tab-contact">
+    <section class="page-section">
+      <div class="container">
+        <div class="page-header">
+          <span class="section-number">02</span>
+          <h2>Aloqa</h2>
+          <p class="page-sub">Loyihalar va hamkorlik uchun</p>
+        </div>
+        <div class="contact-grid">
+          <a href="https://github.com/xolerc" target="_blank" class="contact-btn">GITHUB</a>
+          <a href="https://t.me/wxoleric" target="_blank" class="contact-btn">TELEGRAM</a>
+          <a href="https://youtube.com/@xoleric" target="_blank" class="contact-btn">YOUTUBE</a>
+          <a href="mailto:corexoleric@gmail.com" class="contact-btn">EMAIL</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SETTINGS TAB -->
+  <div class="tab-content" id="tab-settings">
+    <section class="page-section">
+      <div class="container">
+        <div class="page-header" style="margin-bottom:32px;">
+          <span class="section-number">03</span>
+          <h2>Sozlamalar</h2>
+          <p class="page-sub">Ilova sozlamalari va yuklamalar</p>
+        </div>
+        <div class="settings-card">
+          <h3>⬇ XOLERIC APK</h3>
+          <p>Android qurilmangizga XOLERIC ilovasini yuklab oling. Chat, musiqa, video va sozlamalar bilan to'liq tajriba.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="https://github.com/xolerc/matrix-motivation/releases/latest/download/Xolerik.apk" target="_blank" class="btn" style="display:inline-flex;align-items:center;gap:8px;">⬇ XOLERIC APK v1.0</a>
+            <a href="xoleric.apk" class="btn btn-outline" style="display:inline-flex;align-items:center;gap:8px;">⬇ Eski versiya</a>
+          </div>
+        </div>
+        <div class="settings-card">
+          <h3>⚙ Tema</h3>
+          <p>Sayt ko'rinishini o'zgartirish</p>
+          <div class="theme-grid">
+            <button class="theme-btn active" data-theme="dark">🌑 Tungi</button>
+            <button class="theme-btn" data-theme="light">☀️ Kunduzgi</button>
+            <button class="theme-btn" data-theme="matrix">🌐 Matrix</button>
+            <button class="theme-btn" data-theme="cyber">⚡ Cyber</button>
+            <button class="theme-btn" data-theme="neon">💡 Neon</button>
+            <button class="theme-btn" data-theme="minimal">▣ Minimal</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Setup Modal -->
+  <div class="modal-overlay" id="setupModal">
+    <div class="modal">
+      <div class="modal-header"><h3>Xush kelibsiz!</h3></div>
+      <div class="modal-body">
+        <p style="color:rgba(255,255,255,0.4);margin-bottom:20px;font-size:14px;font-weight:300;">Chatda qatnashish uchun profilingizni yarating</p>
+        <div class="setup-avatar" id="setupAvatar">?</div>
+        <label class="setup-avatar-label">Rasm yuklash<input type="file" accept="image/*" hidden id="setupAvatarInput" /></label>
+        <input class="modal-input" id="setupName" placeholder="Username" maxlength="30" />
+        <textarea class="modal-input modal-textarea" id="setupBio" placeholder="Bio (ixtiyoriy)" maxlength="150" rows="2"></textarea>
+        <button class="modal-btn" id="setupSave">Boshlash</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="bgMusic" src="bg-music.mp3" loop></audio>
+  <button id="musicToggle" class="music-btn" aria-label="Musiqa">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+  </button>
+
+  <footer class="footer"><p>XOLERIC &copy; 2026</p></footer>
+
+  <script src="js/main.js?v=7"></script>
+  <script src="js/db.js?v=7"></script>
+  <script src="js/chat.js?v=7"></script>
+  <script src="js/repos.js?v=7"></script>
+  <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');</script>
+</div>
+</body>
+</html>

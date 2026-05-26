@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">XOLERIC</string>
+    <string name="title_activity_main">XOLERIC</string>
+    <string name="package_name">xoleric.app</string>
+    <string name="custom_url_scheme">xoleric.app</string>
+</resources>

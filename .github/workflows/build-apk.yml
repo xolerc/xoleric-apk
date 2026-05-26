@@ -9,7 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout APK repo
+        uses: actions/checkout@v4
+
+      - name: Checkout Web repo
+        uses: actions/checkout@v4
+        with:
+          repository: xolerc/me
+          path: xoleric-web
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -31,7 +38,7 @@ jobs:
       - name: Copy web files
         run: |
           mkdir -p www
-          cp -r ../xoleric-web/* www/
+          cp -r xoleric-web/* www/
 
       - name: Sync Capacitor
         run: npx cap sync android

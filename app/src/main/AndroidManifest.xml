@@ -4,23 +4,47 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="XOLERIC"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.XOLERIC"
-        android:usesCleartextTraffic="false">
+<application
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="XOLERIC"
+    android:supportsRtl="true"
+    android:theme="@style/Theme.XOLERIC"
+    android:usesCleartextTraffic="false">
 
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
-            android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
+    <activity
+        android:name=".MainActivity"
+        android:exported="true"
+        android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+        android:windowSoftInputMode="adjustResize">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
+    <!-- Clock Widget -->
+    <receiver
+        android:name=".ClockWidgetProvider"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        </intent-filter>
+        <meta-data
+            android:name="android.appwidget.provider"
+            android:resource="@xml/widget_clock_info" />
+    </receiver>
+
+    <!-- Calendar Widget -->
+    <receiver
+        android:name=".CalendarWidgetProvider"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        </intent-filter>
+        <meta-data
+            android:name="android.appwidget.provider"
+            android:resource="@xml/widget_calendar_info" />
+    </receiver>
+</application>
 </manifest>

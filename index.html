@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XOLERIC — Music Visualization Studio</title>
+    <title>XOLERIC — Premium Offline Music Player</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -17,26 +17,10 @@
             justify-content: center;
         }
         .container {
-            max-width: 600px;
+            max-width: 640px;
             width: 100%;
             padding: 40px 20px;
             text-align: center;
-        }
-        .logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #6366F1, #22D3EE);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            box-shadow: 0 0 40px rgba(99, 102, 241, 0.4);
-        }
-        .logo span {
-            font-size: 48px;
-            font-weight: bold;
-            color: white;
         }
         h1 {
             font-size: 36px;
@@ -86,6 +70,14 @@
             transform: translateY(-2px);
             box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
         }
+        .secondary-link {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 13px;
+            color: #22D3EE;
+            text-decoration: none;
+        }
+        .secondary-link:hover { text-decoration: underline; }
         .info {
             margin-top: 24px;
             font-size: 13px;
@@ -114,38 +106,50 @@
     <div class="container">
         <img src="icon.png" alt="XOLERIC" class="icon-img">
         <h1>XOLERIC</h1>
-        <p class="subtitle">Music Visualization Studio for Android</p>
+        <p class="subtitle">Premium offline music player for Android — rebuilt from scratch</p>
 
         <div class="features">
             <div class="feature">
-                <div class="icon">🎵</div>
-                <div class="title">24 Visualizers</div>
-                <div class="desc">Waveform, Spectrum, Circular, Beat Pulse, Matrix Rain & more</div>
+                <div class="icon">🎨</div>
+                <div class="title">5 Theme Engines</div>
+                <div class="desc">iOS, Material You dynamic color, One UI, MIUI, Nothing OS</div>
             </div>
             <div class="feature">
-                <div class="icon">🎛️</div>
-                <div class="title">Professional UI</div>
-                <div class="desc">DAW-style mixer, knobs, transport controls</div>
+                <div class="icon">📚</div>
+                <div class="title">Full Library</div>
+                <div class="desc">Songs, Artists, Albums, Genres, Folders & Playlists</div>
             </div>
             <div class="feature">
-                <div class="icon">⚡</div>
-                <div class="title">Real-time FFT</div>
-                <div class="desc">1024-point FFT, Bass/Mid/High bands, beat detection</div>
+                <div class="icon">🎼</div>
+                <div class="title">Smart Features</div>
+                <div class="desc">Synced LRC lyrics, sleep timer with fade, listening stats</div>
             </div>
             <div class="feature">
-                <div class="icon">💾</div>
-                <div class="title">Session Save</div>
-                <div class="desc">Auto-save, restore on restart, double-back to exit</div>
+                <div class="icon">🎚️</div>
+                <div class="title">10-Band EQ</div>
+                <div class="desc">Presets, crossfade, gapless playback, speed control</div>
+            </div>
+            <div class="feature">
+                <div class="icon">✂️</div>
+                <div class="title">Ringtone Cutter</div>
+                <div class="desc">Waveform editor with fade in/out, set as ring/alarm</div>
+            </div>
+            <div class="feature">
+                <div class="icon">🔔</div>
+                <div class="title">Media Controls</div>
+                <div class="desc">Notification panel & lock-screen playback controls</div>
             </div>
         </div>
 
-        <a href="xoleric.apk" class="download-btn" download>
+        <a href="https://github.com/xolerc/xoleric-music/releases/download/flutter-v2.0.0/XOLERIC-v2.0.0-release.apk" class="download-btn" download>
             📥 Download APK
         </a>
+        <br>
+        <a class="secondary-link" href="https://github.com/xolerc/xoleric-music/releases/tag/flutter-v2.0.0">All releases & changelog →</a>
 
         <div class="info">
-            <p>Requires Android 7.0+ • 48.9 MB</p>
-            <div class="version">v1.0.0 • Build 1</div>
+            <p>Requires Android 7.0+ • 63.4 MB • Installs over v1.x</p>
+            <div class="version">v2.0.0 • Build 1</div>
         </div>
     </div>
 </body>
